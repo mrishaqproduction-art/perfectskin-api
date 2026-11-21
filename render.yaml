@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: perfectskin-api
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /health
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: qwen/qwen3.8-27b
+      - key: AI_TIMEOUT_MS
+        value: "90000"
